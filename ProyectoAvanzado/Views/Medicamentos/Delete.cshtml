@@ -1,0 +1,48 @@
+﻿@model ProyectoAvanzado.Models.Medicamento
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+<h2>Delete</h2>
+
+<h3>Esta Seguro que desea eliminar el Registro?</h3>
+<div>
+    <h4>Medicamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreMedicamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreMedicamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionMedicamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionMedicamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObservacionMedicamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObservacionMedicamento)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

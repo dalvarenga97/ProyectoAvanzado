@@ -1,0 +1,42 @@
+﻿@model ProyectoAvanzado.Models.Medicamento
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Medicamento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreMedicamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreMedicamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripcionMedicamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripcionMedicamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObservacionMedicamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObservacionMedicamento)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
