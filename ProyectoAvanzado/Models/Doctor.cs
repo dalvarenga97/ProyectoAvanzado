@@ -11,16 +11,24 @@ namespace ProyectoAvanzado.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Doctor
     {
         public int Id { get; set; }
+        [Required]
+        [Display (Name = "Primer Nombre")]
+        [StringLength(50, ErrorMessage = "{0} debe tener almenos {2} caracteres de longitud", MinimumLength = 3 )]
         public string NombreDoctor { get; set; }
+
+        [Display(Name = "Primer Apellido")]
+        [Required]
         public string ApellidoDoctor { get; set; }
         public string especialidad { get; set; }
         public string sexo { get; set; }
         public Nullable<int> Edad { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
+        [Phone]
         public string Telefono { get; set; }
     }
 }
