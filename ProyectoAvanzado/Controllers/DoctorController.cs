@@ -10,6 +10,7 @@ using ProyectoAvanzado.Models;
 
 namespace ProyectoAvanzado.Controllers
 {
+    //Prueba
     public class DoctorController : Controller
     {
         private MediCsharp2Entities db = new MediCsharp2Entities();
