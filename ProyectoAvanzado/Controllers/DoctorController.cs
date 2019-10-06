@@ -15,12 +15,14 @@ namespace ProyectoAvanzado.Controllers
     {
         private MediCsharp2Entities db = new MediCsharp2Entities();
 
+        [Authorize]
         // GET: Doctor
         public ActionResult Index()
         {
             return View(db.Doctor.ToList());
         }
 
+        [Authorize]
         // GET: Doctor/Details/5
         public ActionResult Details(int? id)
         {
@@ -36,6 +38,7 @@ namespace ProyectoAvanzado.Controllers
             return View(doctor);
         }
 
+        [Authorize]
         // GET: Doctor/Create
         public ActionResult Create()
         {
@@ -59,6 +62,8 @@ namespace ProyectoAvanzado.Controllers
             return View(doctor);
         }
 
+
+        [Authorize]
         // GET: Doctor/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -90,6 +95,7 @@ namespace ProyectoAvanzado.Controllers
             return View(doctor);
         }
 
+        [Authorize]
         // GET: Doctor/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -105,6 +111,7 @@ namespace ProyectoAvanzado.Controllers
             return View(doctor);
         }
 
+        [Authorize]
         // POST: Doctor/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
