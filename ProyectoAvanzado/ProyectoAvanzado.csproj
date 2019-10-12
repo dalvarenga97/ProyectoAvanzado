@@ -208,6 +208,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -304,7 +305,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -341,6 +341,11 @@
     <Content Include="Views\Medicamentos\Details.cshtml" />
     <Content Include="Views\Medicamentos\Edit.cshtml" />
     <Content Include="Views\Medicamentos\Index.cshtml" />
+    <Content Include="Views\Contacto\Create.cshtml" />
+    <Content Include="Views\Contacto\Delete.cshtml" />
+    <Content Include="Views\Contacto\Details.cshtml" />
+    <Content Include="Views\Contacto\Edit.cshtml" />
+    <Content Include="Views\Contacto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,7 +375,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54840</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
