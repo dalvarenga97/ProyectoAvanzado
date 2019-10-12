@@ -17,7 +17,9 @@ namespace ProyectoAvanzado.Controllers
         // GET: Contacto
         public ActionResult Index()
         {
-            return View(db.Contacto.ToList());
+
+            ViewBag.Message = "Gracias por Contactarte con Nosotros!!";
+            return View();
         }
 
         
