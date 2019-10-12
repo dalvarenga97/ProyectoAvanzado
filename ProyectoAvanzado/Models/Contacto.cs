@@ -12,15 +12,11 @@ namespace ProyectoAvanzado.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Doctor
+    public partial class Contacto
     {
         public int Id { get; set; }
-        public string NombreDoctor { get; set; }
-        public string ApellidoDoctor { get; set; }
-        public string especialidad { get; set; }
-        public string sexo { get; set; }
-        public Nullable<int> Edad { get; set; }
-        public Nullable<System.DateTime> FechaNacimiento { get; set; }
-        public string Telefono { get; set; }
+        public string Email { get; set; }
+        public string Contraseña { get; set; }
+        public string Consulta { get; set; }
     }
 }
