@@ -217,6 +217,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Contacto.cs">
+      <DependentUpon>MediCsharp2.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Doctor.cs">
       <DependentUpon>MediCsharp2.tt</DependentUpon>
     </Compile>

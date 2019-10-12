@@ -28,5 +28,6 @@ namespace ProyectoAvanzado.Models
         public virtual DbSet<Doctor> Doctor { get; set; }
         public virtual DbSet<Medicamento> Medicamento { get; set; }
         public virtual DbSet<Paciente> Paciente { get; set; }
+        public virtual DbSet<Contacto> Contacto { get; set; }
     }
 }
