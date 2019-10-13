@@ -11,15 +11,24 @@ namespace ProyectoAvanzado.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Paciente
     {
         public int Id { get; set; }
+        [Required]
         public string NombrePaciente { get; set; }
+        [Required]
         public string ApellidoPaciente { get; set; }
+        [Required]
         public string sexo { get; set; }
+        [Required]
         public Nullable<int> Edad { get; set; }
+        [Required]
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
+
+        [Phone]
+        [Display(Name = "Teléfono")]
         public Nullable<int> Telefono { get; set; }
     }
 }

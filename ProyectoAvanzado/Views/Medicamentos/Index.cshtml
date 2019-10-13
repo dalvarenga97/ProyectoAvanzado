@@ -1,10 +1,14 @@
 ﻿@model IEnumerable<ProyectoAvanzado.Models.Medicamento>
 
 @{
-    ViewBag.Title = "Medicamento";
+    ViewBag.Title = "Medicamentos";
 }
 
-<h2>Index</h2>
+<h2>Lista Medicamentos</h2>
+<div class="alert alert-dismissible alert-info">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    Existen @ViewBag.cantMedicamento Medicamentos.
+</div>
 
 <p>
     @Html.ActionLink("Crear Nuevo", "Create")

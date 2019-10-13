@@ -18,6 +18,9 @@ namespace ProyectoAvanzado.Controllers
         // GET: Medicamentos
         public ActionResult Index()
         {
+            List<Medicamento> listaMedicamento = db.Medicamento.ToList();
+
+            ViewBag.cantMedicamento = listaMedicamento.Count();
             return View(db.Medicamento.ToList());
         }
 

@@ -11,12 +11,16 @@ namespace ProyectoAvanzado.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Medicamento
     {
         public int Id { get; set; }
+        [Required]
         public string NombreMedicamento { get; set; }
+        [Required]
         public string DescripcionMedicamento { get; set; }
+        
         public string ObservacionMedicamento { get; set; }
     }
 }
