@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MediCsharp2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MediCsharp2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Contacto">
           <Key>
             <PropertyRef Name="Id" />
@@ -54,10 +54,20 @@
           <EntitySet Name="Medicamento" EntityType="Self.Medicamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MediCsharp2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Doctor">
           <Key>
             <PropertyRef Name="Id" />
@@ -93,26 +103,27 @@
           <Property Name="Telefono" Type="Int32" />
         </EntityType>
         <EntityContainer Name="MediCsharp2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacto" EntityType="Self.Contacto" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" />
           <EntitySet Name="Medicamento" EntityType="Self.Medicamento" />
           <EntitySet Name="Paciente" EntityType="Self.Paciente" />
-          <EntitySet Name="Contacto" EntityType="MediCsharp2Model.Contacto" />
         </EntityContainer>
-        <EntityType Name="Contacto">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MediCsharp2ModelStoreContainer" CdmEntityContainer="MediCsharp2Entities">
+          <EntitySetMapping Name="Contacto">
+            <EntityTypeMapping TypeName="MediCsharp2Model.Contacto">
+              <MappingFragment StoreEntitySet="Contacto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Doctor">
             <EntityTypeMapping TypeName="MediCsharp2Model.Doctor">
               <MappingFragment StoreEntitySet="Doctor">
@@ -147,16 +158,6 @@
                 <ScalarProperty Name="Edad" ColumnName="Edad" />
                 <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Contacto">
-            <EntityTypeMapping TypeName="MediCsharp2Model.Contacto">
-              <MappingFragment StoreEntitySet="Contacto">
-                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

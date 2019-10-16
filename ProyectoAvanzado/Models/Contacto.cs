@@ -11,14 +11,11 @@ namespace ProyectoAvanzado.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Contacto
     {
         public int Id { get; set; }
-        [Required]
         public string Email { get; set; }
-        [Required]
         public string Nombre { get; set; }
         public string Comentario { get; set; }
     }

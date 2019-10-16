@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="869572e55dc84a28a322e54b77b3a9ce" Name="Diagram1">
-        <EntityTypeShape EntityType="MediCsharp2Model.Doctor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MediCsharp2Model.Medicamento" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MediCsharp2Model.Paciente" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MediCsharp2Model.Contacto" Width="1.5" PointX="5.375" PointY="0.5" />
+      <Diagram DiagramId="a89c0fcb41a246dfa517d2b17bbbd655" Name="Diagram1">
+        <EntityTypeShape EntityType="MediCsharp2Model.Contacto" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MediCsharp2Model.Doctor" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MediCsharp2Model.Medicamento" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MediCsharp2Model.Paciente" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
