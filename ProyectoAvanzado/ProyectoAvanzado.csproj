@@ -257,6 +257,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\Diana.jpg" />
     <Content Include="Models\MediCsharp2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MediCsharp2.edmx</DependentUpon>
@@ -331,11 +332,6 @@
     <Content Include="Views\Doctor\Details.cshtml" />
     <Content Include="Views\Doctor\Edit.cshtml" />
     <Content Include="Views\Doctor\Index.cshtml" />
-    <Content Include="Views\Pacientes\Create.cshtml" />
-    <Content Include="Views\Pacientes\Delete.cshtml" />
-    <Content Include="Views\Pacientes\Details.cshtml" />
-    <Content Include="Views\Pacientes\Edit.cshtml" />
-    <Content Include="Views\Pacientes\Index.cshtml" />
     <Content Include="Views\Medicamentos\Create.cshtml" />
     <Content Include="Views\Medicamentos\Delete.cshtml" />
     <Content Include="Views\Medicamentos\Details.cshtml" />

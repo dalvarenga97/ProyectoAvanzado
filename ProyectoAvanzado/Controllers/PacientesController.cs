@@ -2,126 +2,104 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Web;
-using System.Web.Mvc;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Description;
 using ProyectoAvanzado.Models;
 
 namespace ProyectoAvanzado.Controllers
 {
-    public class PacientesController : Controller
+    public class PacientesController : ApiController
     {
         private MediCsharp2Entities db = new MediCsharp2Entities();
 
-        [Authorize]
-        // GET: Pacientes
-        public ActionResult Index()
+        // GET: api/Pacientes
+        public IQueryable<Paciente> GetPaciente()
         {
-            List<Paciente> listaPaciente = db.Paciente.ToList();
-
-            ViewBag.cantPaciente = listaPaciente.Count();
-            return View(db.Paciente.ToList());
+            return db.Paciente;
         }
 
-        [Authorize]
-        // GET: Pacientes/Details/5
-        public ActionResult Details(int? id)
+        // GET: api/Pacientes/5
+        [ResponseType(typeof(Paciente))]
+        public async Task<IHttpActionResult> GetPaciente(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Paciente paciente = db.Paciente.Find(id);
+            Paciente paciente = await db.Paciente.FindAsync(id);
             if (paciente == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
-            return View(paciente);
+
+            return Ok(paciente);
         }
 
-        [Authorize]
-        // GET: Pacientes/Create
-        public ActionResult Create()
+        // PUT: api/Pacientes/5
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PutPaciente(int id, Paciente paciente)
         {
-            return View();
-        }
-
-        // POST: Pacientes/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,NombrePaciente,ApellidoPaciente,sexo,Edad,FechaNacimiento,Telefono")] Paciente paciente)
-        {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Paciente.Add(paciente);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return BadRequest(ModelState);
             }
 
-            return View(paciente);
+            if (id != paciente.Id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(paciente).State = EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PacienteExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Authorize]
-        // GET: Pacientes/Edit/5
-        public ActionResult Edit(int? id)
+        // POST: api/Pacientes
+        [ResponseType(typeof(Paciente))]
+        public async Task<IHttpActionResult> PostPaciente(Paciente paciente)
         {
-            if (id == null)
+            if (!ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return BadRequest(ModelState);
             }
-            Paciente paciente = db.Paciente.Find(id);
+
+            db.Paciente.Add(paciente);
+            await db.SaveChangesAsync();
+
+            return CreatedAtRoute("DefaultApi", new { id = paciente.Id }, paciente);
+        }
+
+        // DELETE: api/Pacientes/5
+        [ResponseType(typeof(Paciente))]
+        public async Task<IHttpActionResult> DeletePaciente(int id)
+        {
+            Paciente paciente = await db.Paciente.FindAsync(id);
             if (paciente == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
-            return View(paciente);
-        }
 
-        // POST: Pacientes/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,NombrePaciente,ApellidoPaciente,sexo,Edad,FechaNacimiento,Telefono")] Paciente paciente)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(paciente).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(paciente);
-        }
-
-        [Authorize]
-        // GET: Pacientes/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Paciente paciente = db.Paciente.Find(id);
-            if (paciente == null)
-            {
-                return HttpNotFound();
-            }
-            return View(paciente);
-        }
-
-        [Authorize]
-        // POST: Pacientes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Paciente paciente = db.Paciente.Find(id);
             db.Paciente.Remove(paciente);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            await db.SaveChangesAsync();
+
+            return Ok(paciente);
         }
 
         protected override void Dispose(bool disposing)
@@ -131,6 +109,11 @@ namespace ProyectoAvanzado.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private bool PacienteExists(int id)
+        {
+            return db.Paciente.Count(e => e.Id == id) > 0;
         }
     }
 }
