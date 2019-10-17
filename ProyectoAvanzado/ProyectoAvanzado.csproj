@@ -257,7 +257,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Image\Diana.jpg" />
+    <Content Include="Imagenes\abel.PNG" />
+    <Content Include="Imagenes\carlos.PNG" />
+    <Content Include="Imagenes\diana.PNG" />
+    <Content Include="Imagenes\gerardo.PNG" />
     <Content Include="Models\MediCsharp2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MediCsharp2.edmx</DependentUpon>
